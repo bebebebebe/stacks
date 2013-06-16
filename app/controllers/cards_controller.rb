@@ -1,14 +1,7 @@
 class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
-  def index
-    @cards = Card.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @cards }
-    end
-  end
 
 
 
@@ -16,56 +9,38 @@ class CardsController < ApplicationController
   # GET /cards/new.json
   def new
     @card = Card.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @card }
-    end
   end
 
   # GET /cards/1/edit
   def edit
     @card = Card.find(params[:id])
+    @stack = Stack.find_by_id(@card.stack_id)
 
   end
 
   # POST /cards
   # POST /cards.json
   def create
-    @card = Card.create(params[:card])
+     stack = Stack.find_by_id(1)
+     @card = stack.cards.build(params[:card])
+     @card.save!
+    #@card = Card.create(params[:card])
     redirect_to edit_card_path(@card)
-
-    #@next_card = Card.create(params[:card])
-    #redirect_to(edit_card_path @next_card)
-
-    #respond_to do |format|
-      #if @card.save
-      #  format.html { redirect_to @card, notice: 'Card was successfully created.' }
-        #format.json { render json: @card, status: :created, location: @card }
-      #else
-      #  format.html { render action: "new" }
-      #  format.json { render json: @card.errors, status: :unprocessable_entity }
-      #end
-    #end
   end
 
   # PUT /cards/1
   # PUT /cards/1.json
   def update
-    @card = Card.find(params[:id])
 
-    @next_card = Card.create(params[:card])
+    @card = Card.find(params[:id])
+    @stack = Stack.find_by_id(@card.stack_id)
+
+
+    @next_card = Card.new(params[:card])
+    @next_card.stack_id = @card.stack_id
+    @next_card.save
     redirect_to edit_card_path(@next_card)
 
-    # respond_to do |format|
-    #   if @card.update_attributes(params[:card])
-    #     format.html { redirect_to @card, notice: 'Card was successfully updated.' }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: "edit" }
-    #     format.json { render json: @card.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /cards/1
@@ -73,10 +48,5 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cards_url }
-      format.json { head :no_content }
-    end
   end
 end
