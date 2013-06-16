@@ -32,32 +32,16 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(params[:card])
-
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
-        format.json { render json: @card, status: :created, location: @card }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to edit_card_path(@card)
+    
   end
 
   # PUT /cards/1
   # PUT /cards/1.json
   def update
     @card = Card.find(params[:id])
-
-    respond_to do |format|
-      if @card.update_attributes(params[:card])
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    @next_card = Card.create(params[:id])
+    redirect_to edit_card_path(@next_card)    
   end
 
   # DELETE /cards/1
