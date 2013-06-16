@@ -5,7 +5,7 @@ SketchPalefire::Application.routes.draw do
   resources :cards
 
 
-  root to: 'stacks'
+  #root to: 'stacks'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -13,13 +13,10 @@
 
   <div class="field">
     <%= f.label :writing %><br />
-    <%= f.text_field :writing %>
+    <%= f.text_area :writing %>
   </div>
-  <div class="field">
-    <%= f.label :stack_id %><br />
-    <%= f.number_field :stack_id %>
-  </div>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "keep version" %>
   </div>
 <% end %>

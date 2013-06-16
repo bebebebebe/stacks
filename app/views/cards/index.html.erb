@@ -2,18 +2,20 @@
 
 <table>
   <tr>
-    <th>writing</th>
-    <th>stack</th>
     <th></th>
     <th></th>
+    <th>Writing</th>
   </tr>
 
-<% @cards.each do |card| %>
-  <tr>
-    <td><%= card.writing %></td>
-    <td><%= card.stack_id %></td>
-    <td><%= link_to 'revise', edit_card_path(card) %></td>
+
+<% @cards.reverse.each do |card| %>
+  <tr>    
+    
     <td><%= link_to 'destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <td><%= link_to 'revise', edit_card_path(card) %></td>
+
+    <td><%= truncate(card.writing, length: 80) %></td>
   </tr>
 <% end %>
 </table>
