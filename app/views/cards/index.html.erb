@@ -1,0 +1,23 @@
+<h1>stack</h1>
+
+<table>
+  <tr>
+    <th>Writing</th>
+    <th>Stack</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cards.each do |card| %>
+  <tr>
+    <td><%= card.writing %></td>
+    <td><%= card.stack_id %></td>
+    <td><%= link_to 'revise', edit_card_path(card) %></td>
+    <td><%= link_to 'destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'blank card', new_card_path %>
