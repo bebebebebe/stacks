@@ -1,10 +1,10 @@
-<h1>stack</h1>
+<h1>stack <%= @id %></h1>
 
 <table>
   <tr>
     <th></th>
     <th></th>
-    <th>Writing</th>
+    <th>writing</th>
   </tr>
 
 
@@ -22,4 +22,5 @@
 
 <br />
 
-<%= link_to 'blank card', edit_card_path(@blank_card) %>
+<%= link_to 'blank card', edit_card_path(@blank_card) %> |
+<%= link_to 'stacks', stacks_path %>
