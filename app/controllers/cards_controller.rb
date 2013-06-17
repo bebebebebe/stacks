@@ -1,13 +1,10 @@
 class CardsController < ApplicationController
-  # GET /cards
-  # GET /cards.json
-
-
 
 
   # GET /cards/new
   # GET /cards/new.json
   def new
+    #card = Card.find(params[:id])
     @card = Card.new
   end
 

@@ -8,7 +8,7 @@
   </tr>
 
 
-<% @cards.reverse.each do |card| %>
+<% @cards.each do |card| %>
   <tr>    
     
     <td><%= link_to 'destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'blank card', new_card_path %>
+<%= link_to 'blank card', edit_card_path(@blank_card) %>

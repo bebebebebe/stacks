@@ -8,13 +8,19 @@ class StacksController < ApplicationController
   # GET /stacks/1
   # GET /stacks/1.json
   def show
-    @cards = Card.all.select { |card| card.stack_id = :id }
+    stack = Stack.find(params[:id])
+    id = stack.id
+    @cards = Card.all.select { |card| card.stack_id == id }
+    @blank_card = @cards.first
+    @cards = @cards[1...@cards.length].reverse
   end
 
   # GET /stacks/new
   # GET /stacks/new.json
   def new
-    @stack = Stack.new
+    @stack = Stack.create
+    @card = @stack.cards.create
+    redirect_to edit_card_path(@card)
   end
 
   # GET /stacks/1/edit
