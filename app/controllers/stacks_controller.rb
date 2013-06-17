@@ -9,10 +9,9 @@ class StacksController < ApplicationController
   # GET /stacks/1.json
   def show
     stack = Stack.find(params[:id])
-    @id = stack.id
-    @cards = Card.all.select { |card| card.stack_id == @id }
-    @blank_card = @cards.first
-    @cards = @cards[1...@cards.length]#.reverse
+    @cards = stack.cards
+    @blank_card = @cards.last
+    @cards = @cards[0...@cards.length-1]
   end
 
   # GET /stacks/new

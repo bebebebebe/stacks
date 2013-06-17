@@ -9,7 +9,7 @@
 
 <% @stacks.each do |stack| %>
   <tr>
-    <td><%= stack.top_card.writing %>
+    <td><%= stack.cards.first.writing %>
     <td><%= link_to 'cards', stack %></td>
     <td><%= link_to 'destroy', stack, method: :delete, data: { confirm: 'This will destroy all cards in the stack.' } %></td>
   </tr>

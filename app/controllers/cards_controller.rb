@@ -4,7 +4,6 @@ class CardsController < ApplicationController
   # GET /cards/new
   # GET /cards/new.json
   def new
-    #card = Card.find(params[:id])
     @card = Card.new
   end
 
@@ -21,7 +20,6 @@ class CardsController < ApplicationController
      stack = Stack.find_by_id(1)
      @card = stack.cards.build(params[:card])
      @card.save!
-    #@card = Card.create(params[:card])
     redirect_to edit_card_path(@card)
   end
 
