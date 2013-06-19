@@ -1,3 +1,3 @@
 == Stacks
 
-This is a sketch/prototype for part of Palefire: it models stacks of index cards. When composing text on an index card, you can click a "keep version" button, and keep revising what you've written.
+This is a sketch/prototype for part of Palefire: it models stacks of index cards. When composing text on an index card, you can click a "keep version" button, and keep revising what you've written. All the versions you keep are stored in a "stack" of cards, with your last version at the top. The list of all stacks created displays the text of the top card from each stack.
