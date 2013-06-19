@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
 
-
   # GET /cards/new
   # GET /cards/new.json
   def new
